@@ -104,8 +104,9 @@
     body { background: radial-gradient(circle at 12% 8%, rgba(192,57,43,.16), transparent 28%), radial-gradient(circle at 88% 12%, rgba(216,180,106,.12), transparent 26%), #1A1A1A; }
     .paper-texture { background-color:#FDFBF7; background-image:linear-gradient(rgba(26,26,26,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(26,26,26,.025) 1px,transparent 1px); background-size:28px 28px; }
     .seal-mark { writing-mode: vertical-rl; text-orientation: upright; letter-spacing:.12em; }
-    .adsense-slot { min-height:112px; border:1px dashed rgba(216,180,106,.55); background:repeating-linear-gradient(135deg,rgba(216,180,106,.08),rgba(216,180,106,.08) 10px,rgba(253,251,247,.04) 10px,rgba(253,251,247,.04) 20px); }
-    .adsense-slot .adsbygoogle { min-height:112px; width:100%; }
+    .adsense-slot, section:has(> .adsense-slot), div:has(> .adsense-slot) { display:none!important; min-height:0; border:0; background:transparent; }
+    .adsense-slot .adsbygoogle { display:none!important; min-height:0; width:100%; }
+    .ad-break { display:none!important; margin-block:0; min-height:0; }
     input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); opacity:.75; }
   </style>
 </head>
@@ -121,11 +122,11 @@
       </a>
       <div class="hidden items-center gap-6 text-sm text-paper/78 md:flex">
         <a class="transition hover:text-gold" href="#consult">ការទស្សន៍ទាយ</a>
-        <a class="transition hover:text-gold" href="#about">ប្រវត្តិគ្រូ</a>
+        <a class="transition hover:text-gold" href="./about.html">អំពីយើង</a>
         <a class="transition hover:text-gold" href="#publicDailyPanel">ការណែនាំថ្ងៃនេះ</a>
         <a class="transition hover:text-gold" href="#knowledge">មគ្គុទ្ទេសក៍មេតា</a>
         <a class="transition hover:text-gold" href="#faq">សំណួរញឹកញាប់</a>
-        <a class="transition hover:text-gold" href="https://alfred-tan.info/blog.html">Blog</a>
+        <a class="transition hover:text-gold" href="./blog.html">Blog</a>
         <a class="transition hover:text-gold" href="#disclaimer">សេចក្តីបដិសេធ</a>
       </div>
     </nav>
@@ -309,12 +310,10 @@
     <p>© <span id="year"></span> Master Alfred Tan Numerology Studio · kh.alfred-tan.info</p>
     <p class="mx-auto mt-3 max-w-3xl leading-7">ខ្លឹមសារនេះសម្រាប់កម្សាន្ត និងជាឯកសារយោងជីវិតប៉ុណ្ណោះ មិនមែនជាដំបូន្មានផ្នែកច្បាប់ វេជ្ជសាស្ត្រ ហិរញ្ញវត្ថុ ផ្លូវចិត្ត ឬជំនាញផ្សេងទៀតទេ។</p>
     <nav class="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap" aria-label="តំណគាំទ្រ និងច្បាប់">
-      <a href="#about" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-paper/75 transition hover:border-gold/45 hover:text-gold">អំពីយើង</a>
-      <a href="https://alfred-tan.info/contact.html" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-paper/75 transition hover:border-gold/45 hover:text-gold">ទាក់ទងយើង</a>
-      <button type="button" data-open-modal="privacyModal" class="rounded-full border border-gold/45 px-5 py-2 text-sm font-semibold text-gold transition hover:bg-gold/10">គោលការណ៍ឯកជនភាព</button>
-      <a href="https://alfred-tan.info/privacy.html" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-paper/75 transition hover:border-gold/45 hover:text-gold">Privacy Policy</a>
-      <button type="button" data-open-modal="termsModal" class="rounded-full border border-gold/45 px-5 py-2 text-sm font-semibold text-gold transition hover:bg-gold/10">សេចក្តីបដិសេធ និងលក្ខខណ្ឌ</button>
-      <a href="https://alfred-tan.info/terms.html" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-paper/75 transition hover:border-gold/45 hover:text-gold">Terms of Service</a>
+      <a href="./about.html" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-paper/75 transition hover:border-gold/45 hover:text-gold">អំពីយើង About Us</a>
+      <a href="./contact.html" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-paper/75 transition hover:border-gold/45 hover:text-gold">ទាក់ទងយើង Contact Us</a>
+      <a href="./privacy.html" class="rounded-full border border-gold/45 px-5 py-2 text-sm font-semibold text-gold transition hover:bg-gold/10">គោលការណ៍ឯកជនភាព Privacy Policy</a>
+      <a href="./terms.html" class="rounded-full border border-gold/45 px-5 py-2 text-sm font-semibold text-gold transition hover:bg-gold/10">លក្ខខណ្ឌសេវាកម្ម Terms</a>
     </nav>
     <p class="mx-auto mt-5 max-w-3xl leading-7 text-paper/58">ទាក់ទងយើង៖ <a href="mailto:support@alfred-tan.info" class="font-semibold text-gold hover:text-paper">support@alfred-tan.info</a></p>
   </footer>
@@ -448,7 +447,7 @@
     function pickPublicDaily(){ const today = new Date(); const dateKey = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`; const seed = Array.from(dateKey).reduce((sum, char) => sum + char.charCodeAt(0), 0); return publicDailyPool[seed % publicDailyPool.length]; }
     function renderPublicDaily(){ const result = pickPublicDaily(); document.getElementById("publicDailyDate").textContent = `ថ្ងៃនេះ · ${getTodayText()}`; document.getElementById("publicDailyMessage").textContent = result.dailyMessage; document.getElementById("publicDailyDetail").textContent = result.dailyDetail; document.getElementById("publicUsefulGod").textContent = result.usefulGod; document.getElementById("publicUsefulGodNote").textContent = result.usefulGodNote; document.getElementById("publicHaircutNote").textContent = result.haircut; document.getElementById("publicLuckyColor").textContent = result.color; document.getElementById("publicLuckyNumber").textContent = result.number; document.getElementById("publicLuckyHour").textContent = result.hour; document.getElementById("publicLuckyDirection").textContent = result.direction; document.getElementById("publicEnergyContext").textContent = buildEnergyContext(result, "ការណែនាំសាធារណៈ"); renderList("publicGoodList", result.good); renderList("publicAvoidList", result.avoid); }
     function renderResult(user){ const result = pickResult(user); const fullName = `${user.firstName || ""} ${user.lastName || ""}`.trim() || "មិត្ត"; document.getElementById("resultModule").textContent = user.module || DEFAULT_MODULE; document.getElementById("resultDate").textContent = `ថ្ងៃនេះ · ${getTodayText()}`; document.getElementById("resultFor").textContent = `${fullName} · ${user.gender || "តារាង"} · ${user.birthDate || "មិនដឹងថ្ងៃកំណើត"} · ${user.birthHour || "មិនដឹងម៉ោង"} · ${user.location || "មិនដឹងទីតាំង"}`; document.getElementById("dailyMessage").textContent = result.dailyMessage; document.getElementById("dailyDetail").textContent = result.dailyDetail; document.getElementById("usefulGod").textContent = result.usefulGod; document.getElementById("usefulGodNote").textContent = result.usefulGodNote; document.getElementById("luckyColor").textContent = result.color; document.getElementById("luckyNumber").textContent = result.number; document.getElementById("luckyHour").textContent = result.hour; document.getElementById("luckyDirection").textContent = result.direction; const fieldContext = buildFieldContext(result); document.getElementById("luckyColorContext").textContent = fieldContext.color; document.getElementById("luckyNumberContext").textContent = fieldContext.number; document.getElementById("luckyHourContext").textContent = fieldContext.hour; document.getElementById("luckyDirectionContext").textContent = fieldContext.direction; const actionContext = buildActionContext(result); document.getElementById("haircutNote").textContent = actionContext.haircut; document.getElementById("energyContext").textContent = buildEnergyContext(result, user.module || DEFAULT_MODULE); document.getElementById("goldenQuote").textContent = result.quote; renderList("goodList", [...result.good, actionContext.good]); renderList("avoidList", [...result.avoid, actionContext.avoid]); }
-    function loadResultAdSense(){ if (!resultAdSenseAfter || resultAdSenseAfter.dataset.loaded === "true") return; try { window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.push({}); resultAdSenseAfter.dataset.loaded = "true"; } catch(error) { console.warn("Result AdSense unit could not be initialized yet.", error); } }
+    function loadResultAdSense(){ return; if (!resultAdSenseAfter || resultAdSenseAfter.dataset.loaded === "true") return; try { window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.push({}); resultAdSenseAfter.dataset.loaded = "true"; } catch(error) { console.warn("Result AdSense unit could not be initialized yet.", error); } }
     function startReading(user){ renderResult(user); showOnly("result"); loadResultAdSense(); resultSection.scrollIntoView({ behavior: "smooth", block: "start" }); }
     profileForm.addEventListener("submit", (event) => { event.preventDefault(); if (!profileForm.reportValidity()) return; const user = collectFormData(); saveUser(user); startReading(user); });
     askTodayButton.addEventListener("click", () => { const user = getStoredUser(); if (user) { user.module = getReturningModule(); user.lastRequestedAt = new Date().toISOString(); saveUser(user); startReading(user); } else { showOnly("form"); } });

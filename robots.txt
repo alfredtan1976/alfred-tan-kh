@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /test.html
 
 Sitemap: https://kh.alfred-tan.info/sitemap.xml
